@@ -1,0 +1,31 @@
+Configuration For the Birnibgham CNC mill at Maker Nexus
+It's a 4-axis system with a Xylotex "barebonesCNC" cape
+and a Sound Logic BoB. It uses the PRU for high speed step/dir
+pulse generation. The "parport" DB25 has signals on pins 1-17 as
+defined by the BoB.
+The fourth axis is not a rotation axis. it is instead the
+"fine quill", which is a second way to move in the Z direction.
+
+1: spindle speed (pulse rate of 0-10000 becomes 0-3600 motor RPM)
+2-9: stepX stepY stepZ stepA dirX dirY dirZ dirA
+10-17: Estop Xlim Ylim Zlim SpindleDir Alim Coolant chargepump
+18-25: GND
+(Zlim and Alim are also A and B encoder inputs)
+
+BarebonesCNC cape maps BBB pins to DB25 1-17 as follows:
+1: 810
+2-9: 8-19 8-18 8-17 8-16 8-15 8-14 8-13 8-12
+10-17: 9-11 9-13 9-23 9-41 8-07 8-09 9-14 9-15
+
+The cape also uses 811 to enable its 3.3v-to-5v level shiffters
+
+Current axis settings:
+
+max vel   =   1.0 in/s
+max accel =  15.0 in/s/s
+scale     =  4000 steps/in (X,Y,A), 16000 steps/in Z.
+
+Spindle speed depends on the current gear and pulley setup.
+The operator provides this via a small custom floating pyVCP panel.
+The speed pulse signal is driven by the BBB PWM hardware, which is
+controlled by a custom HAL component.

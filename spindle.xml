@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--Spindle configuration panel for the mn_cnc machine at Maker Nexus-->
+<pyvcp>
+    <!-- Pulley and gear radio buttons -->
+    <labelframe text="gear and pulleys">
+    <font>("Helvetica",10)</font>
+    <bd>3</bd>
+    <relief>FLAT</relief> 
+       <hbox>
+            <vbox>
+                <radiobutton>
+                    <choices>["low","high"]</choices>
+                    <halpin>"gear"</halpin>
+                    <!-- default gear is high -->
+                    <initval>1</initval>    
+                </radiobutton>
+            </vbox>
+            <vbox>
+                <radiobutton>
+                    <choices>["A","B","C","D"]</choices>
+                    <halpin>"pulley"</halpin>  
+                    <!--default pulley is C-->      
+                    <initval>2</initval>    
+                </radiobutton>
+            </vbox>
+        </hbox>
+        
+ 
+    </labelframe>
+ 
+    
+    <labelframe text="speed (RPM)">
+    <font>("Helvetica",10)</font>
+    <bd>3</bd>
+    <relief>RIDGE</relief> 
+    <hbox>
+        <hbox>
+            <bar>
+                <halpin>"speed"</halpin>
+                <min_>0</min_>
+                <max_>3800</max_>
+                <bgcolor>"grey"</bgcolor>
+     	        <range1>(0,3000,"green")</range1>
+                <range2>(3001,3600,"orange")</range2>
+                <range3>(3600,3800,"red")</range3>
+                <fillcolor>"green"</fillcolor>
+             </bar>
+        </hbox>        	   	
+    </hbox>
+    </labelframe>
+	
+</pyvcp>
+
+
